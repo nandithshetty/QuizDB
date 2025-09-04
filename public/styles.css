@@ -28,4 +28,4 @@ body { font-family: 'Inter', sans-serif; }
 .answer-option { transition: all 0.2s ease; }
 .answer-option:hover { transform: scale(1.02); }
 .correct-answer { background: linear-gradient(135deg,#10b981,#059669); }
-
+.wrong-answer { background: linear-gradient(135deg,#ef4444,#dc2626); }
