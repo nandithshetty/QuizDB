@@ -1,0 +1,31 @@
+body { font-family: 'Inter', sans-serif; }
+
+.quiz-card {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+.quiz-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+.difficulty-badge { animation: pulse 2s infinite; }
+
+.difficulty-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.difficulty-card:hover {
+  transform: translateY(-8px); /* moves up */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); /* adds shadow */
+}
+
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+.progress-bar { transition: width 0.5s ease; }
+.answer-option { transition: all 0.2s ease; }
+.answer-option:hover { transform: scale(1.02); }
+.correct-answer { background: linear-gradient(135deg,#10b981,#059669); }
+.wrong-answer { background: linear-gradient(135deg,#ef4444,#dc2626); }

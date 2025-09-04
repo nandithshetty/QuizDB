@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuizMaster - Interactive Quiz Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+  <!-- Header -->
+  <header class="bg-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 py-6 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+          <span class="text-white font-bold text-xl">Q</span>
+        </div>
+        <h1 class="text-3xl font-bold text-gray-800">QuizMaster</h1>
+      </div>
+      <div class="text-sm text-gray-600">
+        <span id="totalQuizzes">0</span> quizzes available
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <div id="homeScreen" class="space-y-8">
+      <!-- Difficulty Selection -->
+      <div class="bg-white rounded-2xl shadow-xl p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Choose Your Challenge Level</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <button onclick="selectDifficulty('easy')" class="difficulty-card bg-gradient-to-br from-green-400 to-green-600 text-white p-6 rounded-xl">🌱 Easy<br><span id="easyCount">0 quizzes</span></button>
+          <button onclick="selectDifficulty('medium')" class="difficulty-card bg-gradient-to-br from-yellow-400 to-orange-500 text-white p-6 rounded-xl">🔥 Medium<br><span id="mediumCount">0 quizzes</span></button>
+          <button onclick="selectDifficulty('hard')" class="difficulty-card bg-gradient-to-br from-red-500 to-purple-600 text-white p-6 rounded-xl">⚡ Hard<br><span id="hardCount">0 quizzes</span></button>
+        </div>
+      </div>
+
+      <!-- Quiz Selection -->
+      <div id="quizSelection" class="hidden">
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+          <div class="flex justify-between mb-6">
+            <h2 class="text-2xl font-bold text-gray-800">Available Quizzes</h2>
+            <button onclick="goHome()" class="px-4 py-2 bg-gray-500 text-white rounded-lg">Back</button>
+          </div>
+          <div id="quizList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quizScreen" class="hidden">
+      <div class="bg-white rounded-2xl shadow-xl p-8">
+        <div class="flex justify-between mb-6">
+          <div>
+            <h2 id="quizTitle" class="text-2xl font-bold"></h2>
+            <span id="difficultyBadge" class="difficulty-badge px-3 py-1 rounded-full text-sm"></span>
+          </div>
+          <button onclick="quitQuiz()" class="px-4 py-2 bg-red-500 text-white rounded-lg">Quit</button>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 mb-8">
+          <div id="progressBar" class="progress-bar bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full"></div>
+        </div>
+        <h3 id="questionText" class="text-xl font-semibold mb-6"></h3>
+        <div id="answerOptions" class="space-y-3"></div>
+        <div class="text-center mt-6">
+          <button id="nextButton" onclick="nextQuestion()" class="hidden px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Screen -->
+<div id="resultsScreen" class="hidden">
+  <div class="bg-white rounded-2xl shadow-xl p-8 text-center">
+    <div class="mb-8">
+      <div class="text-6xl mb-4" id="resultEmoji">🎉</div>
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">Quiz Complete!</h2>
+      <div class="text-6xl font-bold mb-4" id="finalScore">0/0</div>
+      <p class="text-xl text-gray-600 mb-6" id="scoreMessage"></p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
+      <div class="bg-green-50 p-6 rounded-xl">
+        <div class="text-3xl font-bold text-green-600" id="correctAnswers">0</div>
+        <div class="text-green-700">Correct</div>
+      </div>
+      <div class="bg-red-50 p-6 rounded-xl">
+        <div class="text-3xl font-bold text-red-600" id="wrongAnswers">0</div>
+        <div class="text-red-700">Wrong</div>
+      </div>
+      <div class="bg-blue-50 p-6 rounded-xl">
+        <div class="text-3xl font-bold text-blue-600" id="accuracyPercent">0%</div>
+        <div class="text-blue-700">Accuracy</div>
+      </div>
+    </div>
+
+    <div class="space-x-4">
+      <button onclick="goHome()" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 font-semibold">
+        Take Another Quiz
+      </button>
+      <button onclick="retakeQuiz()" class="px-8 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors font-semibold">
+        Retake This Quiz
+      </button>
+    </div>
+  </div>
+</div>
+
+
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
